@@ -1,0 +1,18 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        mavenLocal()
+        mavenCentral()
+        maven{ url "https://repo.spring.io/release/" }
+        maven{ url "https://maven.springframework.org/release/" }
+    }
+}
+
+rootProject.name = "simple-awslambda-examples"
+
+include "simple-helloworld"
+include "simple-dynamodb"
+include "simple-auroradb"
+include "simple-http-client"
+include "simple-micronaut-helloworld"
+include "simple-micronaut-aop"
