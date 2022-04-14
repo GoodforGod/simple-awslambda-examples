@@ -1,5 +1,6 @@
-package io.goodforgod.simplelambda;
+package io.goodforgod.simplelambda.micronaut;
 
+import io.goodforgod.aws.lambda.simple.micronaut.MicronautInputLambdaEntrypoint;
 import io.goodforgod.aws.lambda.simple.testing.AwsLambdaAssertions;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -13,7 +14,7 @@ class LambdaHandlerTests extends Assertions {
     @Test
     void eventHandled() {
         final Request request = new Request("Steeven King");
-        final Response response = AwsLambdaAssertions.ofEntrypoint(new LambdaEntrypoint())
+        final Response response = AwsLambdaAssertions.ofEntrypoint(new MicronautInputLambdaEntrypoint())
                 .inputJson(request)
                 .expectJson(Response.class);
 

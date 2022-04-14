@@ -2,11 +2,14 @@ package io.goodforgod.simplelambda.http;
 
 import io.goodforgod.aws.lambda.simple.convert.Converter;
 import io.goodforgod.aws.lambda.simple.http.SimpleHttpClient;
+import io.goodforgod.aws.lambda.simple.http.SimpleHttpRequest;
 import io.goodforgod.aws.lambda.simple.http.SimpleHttpResponse;
+import io.goodforgod.http.common.HttpMethod;
 import io.goodforgod.http.common.HttpStatus;
 import io.goodforgod.http.common.exception.HttpStatusException;
 import io.goodforgod.http.common.uri.URIBuilder;
 import java.net.URI;
+import java.time.Duration;
 
 /**
  * @author Anton Kurako (GoodforGod)
@@ -32,7 +35,12 @@ public class EtherscanHttpClient {
                 .param("blockno", blockNumber)
                 .build();
 
-        final SimpleHttpResponse httpResponse = httpClient.get(uri);
+        final SimpleHttpRequest request = SimpleHttpRequest.builder(uri)
+                .method(HttpMethod.GET)
+                .timeout(Duration.ofSeconds(10))
+                .build();
+
+        final SimpleHttpResponse httpResponse = httpClient.execute(request);
         if (!httpResponse.status().equals(HttpStatus.OK)) {
             throw new HttpStatusException(httpResponse.status(), "Error retrieving block");
         }

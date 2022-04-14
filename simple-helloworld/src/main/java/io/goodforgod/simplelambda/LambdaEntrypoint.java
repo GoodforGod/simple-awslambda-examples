@@ -2,7 +2,6 @@ package io.goodforgod.simplelambda;
 
 import io.goodforgod.aws.lambda.simple.AbstractInputLambdaEntrypoint;
 import io.goodforgod.aws.lambda.simple.runtime.SimpleRuntimeContext;
-import io.goodforgod.graalvm.hint.annotation.InitializationHint;
 import io.goodforgod.graalvm.hint.annotation.NativeImageHint;
 import java.util.function.Consumer;
 
@@ -10,8 +9,7 @@ import java.util.function.Consumer;
  * @author Anton Kurako (GoodforGod)
  * @since 16.09.2021
  */
-@NativeImageHint(entrypoint = LambdaEntrypoint.class)
-@InitializationHint(typeNames = "io.goodforgod.simplelambda")
+@NativeImageHint(entrypoint = LambdaEntrypoint.class, name = "application")
 public class LambdaEntrypoint extends AbstractInputLambdaEntrypoint {
 
     private static final LambdaEntrypoint ENTRYPOINT = new LambdaEntrypoint();
