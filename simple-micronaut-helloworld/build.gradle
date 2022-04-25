@@ -39,7 +39,7 @@ dependencies {
     compileOnly "org.graalvm.nativeimage:svm"
 
     implementation "io.goodforgod:simple-awslambda-micronaut:0.27.0-SNAPSHOT"
-    implementation "io.goodforgod:slf4j-simple-logger:0.14.0"
+    implementation "io.goodforgod:slf4j-simple-logger:0.15.0"
 
     testAnnotationProcessor "io.micronaut:micronaut-inject-java"
     testImplementation "io.micronaut:micronaut-inject-java"

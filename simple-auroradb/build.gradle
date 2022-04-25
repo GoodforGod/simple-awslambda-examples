@@ -39,7 +39,7 @@ dependencies {
 
     implementation "org.mariadb.jdbc:mariadb-java-client:2.7.5"
 
-    implementation "io.goodforgod:slf4j-simple-logger:0.14.0"
+    implementation "io.goodforgod:slf4j-simple-logger:0.15.0"
     implementation "io.goodforgod:simple-awslambda:0.27.0-SNAPSHOT"
 
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:5.8.2"
