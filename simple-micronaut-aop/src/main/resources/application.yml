@@ -1,6 +1,6 @@
 micronaut:
   application:
-    name: simple-awslambda-micronaut-aop
+    name: simple-micronaut-aop
     default-charset: UTF-8
 
 gson:

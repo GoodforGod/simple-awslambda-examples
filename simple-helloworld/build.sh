@@ -1,4 +1,4 @@
 #!/bin/bash
 
-docker build -t simple-awslambda-helloworld .
-docker run --rm --entrypoint cat simple-awslambda-helloworld /home/application/function.zip > build/function.zip
+docker build -t simple-helloworld .
+docker run --rm --entrypoint cat simple-helloworld /home/application/function.zip > build/function.zip

@@ -18,8 +18,8 @@ Check bootstrap file that it have **LF line** (Unix one) separator.
 ## Build
 
 ```shell
-docker build -t simple-awslambda-rest-api .
-docker run --rm --entrypoint cat simple-awslambda-rest-api /home/application/function.zip > build/function.zip
+docker build -t simple-http-client .
+docker run --rm --entrypoint cat simple-http-client /home/application/function.zip > build/function.zip
 ```
 
 ## SAM

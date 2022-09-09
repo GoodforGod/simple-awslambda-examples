@@ -6,7 +6,7 @@ plugins {
     id "org.sonarqube" version "3.3"
     id "com.diffplug.spotless" version "6.1.0"
     id "com.github.johnrengelman.shadow" version "7.1.2"
-    id "io.micronaut.application" version "3.3.2"
+    id "io.micronaut.minimal.application" version "3.5.3"
 }
 
 repositories {
@@ -20,7 +20,7 @@ sourceCompatibility = JavaVersion.VERSION_17
 targetCompatibility = JavaVersion.VERSION_17
 
 micronaut {
-    version("3.4.2")
+    version("3.6.2")
     processing {
         incremental(true)
         module(project.name)
@@ -30,15 +30,15 @@ micronaut {
 }
 
 dependencies {
-    annotationProcessor "io.goodforgod:graalvm-hint-processor:0.18.1"
+    annotationProcessor "io.goodforgod:graalvm-hint-processor:0.19.0"
     annotationProcessor "io.micronaut:micronaut-inject-java"
     annotationProcessor "io.micronaut:micronaut-graal"
 
-    compileOnly "io.goodforgod:graalvm-hint-annotations:0.18.1"
+    compileOnly "io.goodforgod:graalvm-hint-annotations:0.19.0"
     compileOnly "io.micronaut:micronaut-inject-java"
     compileOnly "org.graalvm.nativeimage:svm"
 
-    implementation "io.goodforgod:simple-awslambda-micronaut:0.27.0-SNAPSHOT"
+    implementation "io.goodforgod:simple-awslambda-micronaut:0.30.0-SNAPSHOT"
     implementation "io.goodforgod:slf4j-simple-logger:0.15.0"
 
     testAnnotationProcessor "io.micronaut:micronaut-inject-java"

@@ -18,8 +18,8 @@ Check bootstrap file that it have **LF line** (Unix one) separator.
 ## Build
 
 ```shell
-docker build -t simple-awslambda-auroradb .
-docker run --rm --entrypoint cat simple-awslambda-auroradb /home/application/function.zip > build/function.zip
+docker build -t simple-auroradb .
+docker run --rm --entrypoint cat simple-auroradb /home/application/function.zip > build/function.zip
 ```
 
 ## SAM

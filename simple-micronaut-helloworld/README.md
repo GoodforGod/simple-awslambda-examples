@@ -18,8 +18,8 @@ Check bootstrap file that it have **LF line** (Unix one) separator.
 ## Build
 
 ```shell
-docker build -t simple-awslambda-micronaut-helloworld .
-docker run --rm --entrypoint cat simple-awslambda-micronaut-helloworld /home/application/function.zip > build/function.zip
+docker build -t simple-micronaut-helloworld .
+docker run --rm --entrypoint cat simple-micronaut-helloworld /home/application/function.zip > build/function.zip
 ```
 
 ## SAM

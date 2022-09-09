@@ -1,6 +1,6 @@
 micronaut:
   application:
-    name: simple-awslambda-rest-api
+    name: simple-http-client
     default-charset: UTF-8
 
 gson:

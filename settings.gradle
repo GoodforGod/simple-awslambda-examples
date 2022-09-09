@@ -16,3 +16,5 @@ include "simple-auroradb"
 include "simple-http-client"
 include "simple-micronaut-helloworld"
 include "simple-micronaut-aop"
+include 'simple-s3'
+
