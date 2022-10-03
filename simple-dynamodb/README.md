@@ -22,6 +22,12 @@ docker build -t simple-dynamodb .
 docker run --rm --entrypoint cat simple-dynamodb /home/application/function.zip > build/function.zip
 ```
 
+## Environment
+
+Set *DYNAMODB_REGION* pointing to DynamoDB region.
+
+Create table named *Names* in DynamoDB.
+
 ## SAM
 
 ```shell

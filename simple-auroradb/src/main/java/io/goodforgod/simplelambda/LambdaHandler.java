@@ -59,8 +59,8 @@ public class LambdaHandler implements RequestHandler<Request, Response> {
     }
 
     private Properties getProperties() {
-        final String user = System.getenv("AURORA_USER");
-        final String pass = System.getenv("AURORA_PASS");
+        final String user = getEnvOrThrow("AURORA_USER");
+        final String pass = getEnvOrThrow("AURORA_PASS");
 
         final Properties properties = new Properties();
         properties.put(DefaultOptions.USER.getOptionName(), user);
@@ -70,8 +70,17 @@ public class LambdaHandler implements RequestHandler<Request, Response> {
     }
 
     private String getJDBC() {
-        final String endpoint = System.getenv("AURORA_ENDPOINT");
-        final String database = System.getenv("AURORA_DB");
+        final String endpoint = getEnvOrThrow("AURORA_ENDPOINT");
+        final String database = getEnvOrThrow("AURORA_DB");
         return "jdbc:mariadb:aurora//" + endpoint + ":3306/" + database;
+    }
+
+    private static String getEnvOrThrow(String env) {
+        final String regionStr = System.getenv(env);
+        if (regionStr == null) {
+            throw new IllegalArgumentException(env + " env is not set!");
+        }
+
+        return regionStr;
     }
 }

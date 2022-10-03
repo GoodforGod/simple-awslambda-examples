@@ -23,7 +23,7 @@ public class LambdaHandler implements RequestHandler<Request, Response> {
 
     private final DynamoDbClient client = DynamoDbClient.builder()
             .httpClient(ApacheHttpClient.create())
-            .region(Region.EU_CENTRAL_1)
+            .region(getRegion())
             .build();
 
     @Override
@@ -39,5 +39,17 @@ public class LambdaHandler implements RequestHandler<Request, Response> {
 
         logger.info("DDB response code: {}", response.sdkHttpResponse().statusCode());
         return new Response(id, "Hello - " + request.name());
+    }
+
+    private static Region getRegion() {
+        final String regionStr = System.getenv("DYNAMODB_REGION");
+        if (regionStr == null) {
+            throw new IllegalArgumentException("DYNAMODB_REGION env is not set!");
+        }
+
+        return Region.regions().stream()
+                .filter(r -> r.id().equals(regionStr))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("AWS_REGION is not invalid value: " + regionStr));
     }
 }
