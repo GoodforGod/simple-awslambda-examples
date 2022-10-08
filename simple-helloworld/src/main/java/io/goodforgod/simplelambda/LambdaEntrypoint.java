@@ -20,9 +20,6 @@ public class LambdaEntrypoint extends AbstractInputLambdaEntrypoint {
 
     @Override
     protected Consumer<SimpleRuntimeContext> setupInCompileTime() {
-        return context -> {
-            final LambdaHandler lambda = new LambdaHandler();
-            context.registerBean(lambda);
-        };
+        return context -> context.registerBean(new LambdaHandler());
     }
 }
