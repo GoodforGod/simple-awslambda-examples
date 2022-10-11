@@ -7,6 +7,9 @@ import io.goodforgod.graalvm.hint.annotation.ReflectionHint;
 import io.minio.PutObjectArgs;
 import io.minio.messages.ErrorResponse;
 import java.util.function.Consumer;
+import org.apache.commons.logging.LogFactory;
+import org.apache.commons.logging.impl.LogFactoryImpl;
+import org.apache.commons.logging.impl.SimpleLog;
 
 /**
  * @author Anton Kurako (GoodforGod)
@@ -14,13 +17,9 @@ import java.util.function.Consumer;
  */
 @NativeImageHint(entrypoint = LambdaEntrypoint.class, name = "application")
 @ReflectionHint(
-        types = {
-                PutObjectArgs.class,
-                ErrorResponse.class,
-        },
-        typeNames = {
-                "org.simpleframework.xml.core.ElementLabel"
-        })
+        types = { PutObjectArgs.class, ErrorResponse.class, },
+        typeNames = { "org.simpleframework.xml.core.ElementLabel" })
+@ReflectionHint(types = { LogFactory.class, LogFactoryImpl.class, SimpleLog.class })
 public class LambdaEntrypoint extends AbstractInputLambdaEntrypoint {
 
     private static final LambdaEntrypoint ENTRYPOINT = new LambdaEntrypoint();
@@ -31,9 +30,6 @@ public class LambdaEntrypoint extends AbstractInputLambdaEntrypoint {
 
     @Override
     protected Consumer<SimpleRuntimeContext> setupInCompileTime() {
-        return context -> {
-            final LambdaHandler lambda = new LambdaHandler();
-            context.registerBean(lambda);
-        };
+        return context -> context.registerBean(new AwsLambdaHandler());
     }
 }

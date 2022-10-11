@@ -27,7 +27,7 @@ public class LambdaHandler implements RequestHandler<Request, Response> {
         if (httpClient == null) {
             final String region = getEnvOrThrow("S3_REGION");
             this.httpClient = MinioClient.builder()
-                    .endpoint("s3.amazonaws.com")
+                    .endpoint("s3")
                     .region(region)
                     .build();
         }
