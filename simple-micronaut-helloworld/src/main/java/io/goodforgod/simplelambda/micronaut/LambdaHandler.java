@@ -4,6 +4,7 @@ import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 import io.goodforgod.aws.lambda.simple.micronaut.MicronautInputLambdaEntrypoint;
 import io.goodforgod.graalvm.hint.annotation.NativeImageHint;
+import io.goodforgod.simplelambda.micronaut.aop.PrintMethod;
 import io.micronaut.core.annotation.Introspected;
 import jakarta.inject.Singleton;
 import java.util.UUID;
@@ -21,6 +22,7 @@ public class LambdaHandler implements RequestHandler<Request, Response> {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
+    @PrintMethod
     @Override
     public Response handleRequest(Request request, Context context) {
         logger.info("Processing User with name: {}", request.name());

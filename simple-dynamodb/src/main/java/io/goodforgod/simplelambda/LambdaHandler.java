@@ -2,8 +2,12 @@ package io.goodforgod.simplelambda;
 
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
+import io.goodforgod.graalvm.hint.annotation.ReflectionHint;
 import java.util.Map;
 import java.util.UUID;
+import org.apache.commons.logging.LogFactory;
+import org.apache.commons.logging.impl.LogFactoryImpl;
+import org.apache.commons.logging.impl.SimpleLog;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import software.amazon.awssdk.http.apache.ApacheHttpClient;
@@ -17,6 +21,7 @@ import software.amazon.awssdk.services.dynamodb.model.PutItemResponse;
  * @author Anton Kurako (GoodforGod)
  * @since 31.07.2021
  */
+@ReflectionHint(types = { LogFactory.class, LogFactoryImpl.class, SimpleLog.class })
 public class LambdaHandler implements RequestHandler<Request, Response> {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
