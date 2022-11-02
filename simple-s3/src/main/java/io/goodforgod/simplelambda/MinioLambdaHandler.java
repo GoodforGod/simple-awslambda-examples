@@ -14,7 +14,7 @@ import org.slf4j.LoggerFactory;
  * @author Anton Kurako (GoodforGod)
  * @since 10.09.2022
  */
-public class LambdaHandler implements RequestHandler<Request, Response> {
+public class MinioLambdaHandler implements RequestHandler<Request, Response> {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
