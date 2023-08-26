@@ -3,8 +3,6 @@ plugins {
     id "jacoco"
     id "application"
 
-    id "org.sonarqube" version "3.3"
-    id "com.diffplug.spotless" version "6.1.0"
     id "com.github.johnrengelman.shadow" version "7.1.2"
 }
 
@@ -19,18 +17,18 @@ sourceCompatibility = JavaVersion.VERSION_17
 targetCompatibility = JavaVersion.VERSION_17
 
 dependencies {
-    annotationProcessor "io.goodforgod:graalvm-hint-processor:0.20.0"
-    compileOnly "io.goodforgod:graalvm-hint-annotations:0.20.0"
+    annotationProcessor "io.goodforgod:graalvm-hint-processor:1.1.0"
+    compileOnly "io.goodforgod:graalvm-hint-annotations:1.1.0"
 
-    implementation "io.minio:minio:8.4.5"
-    implementation "io.goodforgod:slf4j-simple-logger:0.16.0"
-    implementation "io.goodforgod:simple-awslambda:0.30.0-SNAPSHOT"
+    implementation "io.minio:minio:8.5.4"
+    implementation "io.goodforgod:slf4j-simple-logger:2.0.0"
+    implementation "io.goodforgod:simple-awslambda:1.0.0-SNAPSHOT"
     implementation "com.amazonaws:aws-java-sdk-s3:1.12.328"
     implementation "software.amazon.awssdk:s3:2.18.6"
 
-    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:5.8.2"
-    testImplementation "org.junit.jupiter:junit-jupiter-api:5.8.2"
-    testImplementation "org.junit.jupiter:junit-jupiter-params:5.8.2"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:5.9.3"
+    testImplementation "org.junit.jupiter:junit-jupiter-api:5.9.3"
+    testImplementation "org.junit.jupiter:junit-jupiter-params:5.9.3"
 }
 
 test {
@@ -41,21 +39,11 @@ test {
     }
 
     reports {
-        html.enabled(false)
-        junitXml.enabled(false)
+        html.required = false
+        junitXml.required = false
     }
 }
 
-spotless {
-    java {
-        encoding("UTF-8")
-        importOrder()
-        removeUnusedImports()
-        eclipse("4.21.0").configFile("${rootDir}/config/codestyle.xml")
-    }
-}
-
-jar.enabled = true
 shadowJar {
     mergeServiceFiles()
     manifest {
@@ -80,7 +68,7 @@ javadoc {
 check.dependsOn jacocoTestReport
 jacocoTestReport {
     reports {
-        xml.enabled(true)
+        xml.required = true
         html.destination file("${buildDir}/jacocoHtml")
     }
 }

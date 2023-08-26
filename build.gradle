@@ -1,15 +1,41 @@
+buildscript {
+    dependencies {
+        classpath "com.diffplug.spotless:spotless-plugin-gradle:6.19.0"
+    }
+}
+
+plugins {
+    id "jacoco"
+}
+
 group = groupId
 version = artifactVersion
 
 subprojects {
+    apply plugin: "java"
+    apply plugin: "com.diffplug.spotless"
+
     group = groupId
     version = artifactVersion
+
+    repositories {
+        mavenCentral()
+    }
 
     configurations {
         all {
             resolutionStrategy {
                 cacheChangingModulesFor 0, "seconds" // check for updates every build
             }
+        }
+    }
+
+    spotless {
+        java {
+            encoding("UTF-8")
+            importOrder()
+            removeUnusedImports()
+            eclipse("4.21").configFile("${rootDir}/config/codestyle.xml")
         }
     }
 }
