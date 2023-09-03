@@ -22,7 +22,7 @@ dependencies {
 
     implementation "io.minio:minio:8.5.4"
     implementation "io.goodforgod:slf4j-simple-logger:2.0.0"
-    implementation "io.goodforgod:simple-awslambda:1.0.0-SNAPSHOT"
+    implementation "io.goodforgod:simple-awslambda:1.0.0"
     implementation "com.amazonaws:aws-java-sdk-s3:1.12.328"
     implementation "software.amazon.awssdk:s3:2.18.6"
 

@@ -41,7 +41,7 @@ dependencies {
     compileOnly "org.graalvm.nativeimage:svm"
     runtimeOnly "org.yaml:snakeyaml"
 
-    implementation "io.goodforgod:simple-awslambda-micronaut:1.0.0-SNAPSHOT"
+    implementation "io.goodforgod:simple-awslambda-micronaut:1.0.0"
     implementation "io.goodforgod:slf4j-simple-logger:2.0.0"
 
     testAnnotationProcessor "io.micronaut:micronaut-inject-java"
